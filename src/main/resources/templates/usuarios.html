@@ -6,8 +6,9 @@
     </head>
     <body>
         <header th:replace="plantillas/partes :: cabecero"></header>
-        <h2>PAGINA DE INICIO</h2>
-        <a th:href="@{/agregar}">AGREGAR USUARIO</a>
+        <h2>PAGINA DE USUARIOS</h2>
+        <a th:href="@{/}">REGRESAR</a> &nbsp;|&nbsp;
+        <a th:href="@{/usuarios/agregar}">AGREGAR USUARIO</a>
         <h4>LISTA DE PERSONAS</h4>
         <hr>
         <div th:if="${usuarios != null and !usuarios.empty}">
@@ -25,8 +26,8 @@
                     <td th:text="${u.clave}"></td>
                     <td th:text="${u.nombre}"></td>
                     <td th:text="${u.email}"></td>
-                    <td><a th:href="@{/editar/}+${u.cedula}" th:text="EDITAR"></a></td>
-                    <td><a th:href="@{/eliminar/}+${u.cedula}" th:text="ELIMINAR"></a></td>
+                    <td><a th:href="@{/usuarios/editar/}+${u.cedula}" th:text="EDITAR"></a></td>
+                    <td><a th:href="@{/usuarios/eliminar/}+${u.cedula}" th:text="ELIMINAR"></a></td>
                 </tr>
             </table>
         </div>
