@@ -7,9 +7,9 @@
     </head>
     <body>
         <h1>[[#{usuario.formulario}]]</h1>
-        <a th:href="@{/}">[[#{accion.regresar}]]</a>
+        <a th:href="@{/usuarios}">[[#{accion.regresar}]]</a>
         <br/>
-        <form th:action="@{/guardar}" method="POST" th:object="${usuario}">
+        <form th:action="@{/usuarios/guardar}" method="POST" th:object="${usuario}">
             <br/>
             <label for="cedula" th:text="#{usuario.cedula}"></label>
             <input type="text" name="cedula" th:field="*{cedula}" />
