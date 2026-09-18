@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>DATOS DEL ARTICULO</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>[[#{articulo.formulario}]]</h1>
+        <a th:href="@{/articulos}">[[#{accion.regresar}]]</a>
+        <br/>
+        <form th:action="@{/articulos/guardar}" method="POST" th:object="${articulo}">
+            <br/>
+            <label for="id" th:text="#{articulo.id}"></label>
+            <input type="text" name="id" th:field="*{id}" />
+            <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+            <br/>
+            <label for="marca" th:text="#{articulo.marca}"></label>
+            <input type="text" name="marca" th:field="*{marca}" />
+            <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></span>
+            <br/>
+            <label for="precioVenta" th:text="#{articulo.precioVenta}"></label>
+            <input type="number" step="0.01" name="precioVenta" th:field="*{precioVenta}" />
+            <span th:if="${#fields.hasErrors('precioVenta')}" th:errors="*{precioVenta}"></span>
+            <br/>
+            <label for="precioCompra" th:text="#{articulo.precioCompra}"></label>
+            <input type="number" step="0.01" name="precioCompra" th:field="*{precioCompra}" />
+            <span th:if="${#fields.hasErrors('precioCompra')}" th:errors="*{precioCompra}"></span>
+            <br/>
+            <label for="iva" th:text="#{articulo.iva}"></label>
+            <input type="text" name="iva" th:field="*{iva}" readonly />
+            <br/>
+            <label for="modelo" th:text="#{articulo.modelo}"></label>
+            <input type="text" name="modelo" th:field="*{modelo}" />
+            <br/>
+            <label for="proveedor" th:text="#{articulo.proveedor}"></label>
+            <input type="text" name="proveedor" th:field="*{proveedor}" />
+            <br/>
+            <label for="tienda" th:text="#{articulo.tienda}"></label>
+            <input type="text" name="tienda" th:field="*{tienda}" />
+            <br/>
+            <label for="cantidad" th:text="#{articulo.cantidad}"></label>
+            <input type="number" name="cantidad" th:field="*{cantidad}" />
+            <br/>
+            <label for="descripcion" th:text="#{articulo.descripcion}"></label>
+            <input type="text" name="descripcion" th:field="*{descripcion}" />
+            <br/>
+            <label for="categoria" th:text="#{articulo.categoria}"></label>
+            <input type="text" name="categoria" th:field="*{categoria}" />
+            <br/>
+            <label for="usuario" th:text="#{articulo.usuario}"></label>
+            <select id="usuario" th:field="*{usuario}">
+                <option value="">-- Seleccione --</option>
+                <option th:each="u : ${usuarios}" th:value="${u.cedula}" th:text="${u.nombre}"></option>
+            </select>
+            <br/>
+            <input type="reset" th:value="#{accion.limpiar}"/> &nbsp;&nbsp;&nbsp;
+            <input type="submit" name="guardar" th:value="#{accion.guardar}"/>
+            <br/>
+        </form>
+    </body>
+</html>
