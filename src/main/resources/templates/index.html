@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <header th:replace="plantillas/partes :: cabecero"></header>
         <h2>PAGINA DE INICIO</h2>
         <a th:href="@{/agregar}">AGREGAR USUARIO</a>
         <h4>LISTA DE PERSONAS</h4>
@@ -17,6 +18,7 @@
                     <th>NOMBRE</th>
                     <th>EMAIL</th>
                     <th>EDITAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
                 <tr th:each="u: ${usuarios}">
                     <td th:text="${u.cedula}"></td>
@@ -24,11 +26,13 @@
                     <td th:text="${u.nombre}"></td>
                     <td th:text="${u.email}"></td>
                     <td><a th:href="@{/editar/}+${u.cedula}" th:text="EDITAR"></a></td>
+                    <td><a th:href="@{/eliminar/}+${u.cedula}" th:text="ELIMINAR"></a></td>
                 </tr>
             </table>
         </div>
         <div th:if="${usuarios == null or usuarios.empty}">
             La lista de Usuarios está Vacía
-        </div>
+        </div> <br/><hr>
+        <footer th:replace="plantillas/partes :: pie"></footer>
     </body>
 </html>
