@@ -16,12 +16,14 @@
                     <th>CLAVE</th>
                     <th>NOMBRE</th>
                     <th>EMAIL</th>
+                    <th>EDITAR</th>
                 </tr>
                 <tr th:each="u: ${usuarios}">
                     <td th:text="${u.cedula}"></td>
                     <td th:text="${u.clave}"></td>
                     <td th:text="${u.nombre}"></td>
                     <td th:text="${u.email}"></td>
+                    <td><a th:href="@{/editar/}+${u.cedula}" th:text="EDITAR"></a></td>
                 </tr>
             </table>
         </div>
