@@ -1,14 +1,15 @@
 package mintic.misiontic.ciclo3.EjemploSpring.controladores;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import mintic.misiontic.ciclo3.EjemploSpring.modelo.Usuario;
 import mintic.misiontic.ciclo3.EjemploSpring.servicio.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 
 import java.util.List;
 
@@ -35,7 +36,10 @@ public class ControladorInicio {
     }
 
     @PostMapping("/guardar")
-    public String guardar(Usuario usuario) {
+    public String guardar(@Valid Usuario usuario, Errors errores) {
+        if (errores.hasErrors()) {
+            return "modificar";
+        }
         userServicio.guardar(usuario);
         return "redirect:/";
     }
@@ -46,5 +50,11 @@ public class ControladorInicio {
         usuario = userServicio.buscar(usuario);
         modelo.addAttribute("usuario", usuario);
         return "modificar";
+    }
+
+    @GetMapping("/eliminar/{cedula}")
+    public String eliminar(Usuario usuario) {
+        userServicio.eliminar(usuario);
+        return "redirect:/";
     }
 }
