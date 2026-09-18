@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+        <title>EJEMPLO DE CRUD MVC CON SPRING BOOT</title>
         <meta charset="UTF-8">
-        <title>Todo suply a title</title>
     </head>
     <body>
         <h2>PAGINA DE INICIO</h2>
+        <a th:href="@{/agregar}">AGREGAR USUARIO</a>
         <h4>LISTA DE PERSONAS</h4>
         <hr>
         <div th:if="${usuarios != null and !usuarios.empty}">
