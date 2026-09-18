@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUsuarioCrud extends CrudRepository<Usuario, String> {
 
@@ -14,5 +15,8 @@ public interface IUsuarioCrud extends CrudRepository<Usuario, String> {
 
     @Query("SELECT u FROM Usuario u WHERE LOWER(u.email) LIKE LOWER(CONCAT('%', :email, '%'))")
     List<Usuario> buscarPorEmail(@Param("email") String email);
+
+    @Query("SELECT u FROM Usuario u WHERE LOWER(u.email) = LOWER(:email)")
+    Optional<Usuario> buscarEmailExacto(@Param("email") String email);
 
 }

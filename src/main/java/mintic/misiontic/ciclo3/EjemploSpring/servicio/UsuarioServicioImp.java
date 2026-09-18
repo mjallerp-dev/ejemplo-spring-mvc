@@ -49,4 +49,10 @@ public class UsuarioServicioImp implements IUsuarioServicio {
     public List<Usuario> buscarPorEmail(String email) {
         return crudUser.buscarPorEmail(email);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Usuario buscarEmailExacto(String email) {
+        return crudUser.buscarEmailExacto(email).orElse(null);
+    }
 }

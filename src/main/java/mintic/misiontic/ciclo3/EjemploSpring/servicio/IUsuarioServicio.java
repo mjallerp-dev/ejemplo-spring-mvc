@@ -16,4 +16,6 @@ public interface IUsuarioServicio {
     List<Usuario> buscarPorNombre(String nombre);
 
     List<Usuario> buscarPorEmail(String email);
+
+    Usuario buscarEmailExacto(String email);
 }

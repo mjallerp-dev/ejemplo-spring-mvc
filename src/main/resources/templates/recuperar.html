@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>RECORDATORIO DE CLAVE</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>[[#{recuperar.titulo}]]</h1>
+        <p th:if="${enviado}" th:text="#{recuperar.enviado}"></p>
+        <form th:action="@{/recuperar}" method="post">
+            <label th:text="#{usuario.email}"></label>
+            <input type="email" name="email" required>
+            <br/>
+            <input type="submit" th:value="#{recuperar.enviar}">
+        </form>
+        <p><a th:href="@{/login}" th:text="#{accion.regresar}"></a></p>
+    </body>
+</html>
