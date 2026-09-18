@@ -1,0 +1,27 @@
+spring.application.name=EjemploSpring
+
+# CAMBIAR EL PUERTO DEL SERVIDOR
+server.port=8080
+
+# QUITAR EL BANNER Y LOGO DE SPRING DEL LOG
+spring.main.banner-mode=off
+
+# ACTUALIZAR AUTOMÁTICAMENTE CUANDO GUARDEMOS LOS CAMBIOS
+spring.thymeleaf.cache=false
+
+# PARÁMETRO COMPARTIDO ENTRE CONTROLADOR Y VISTA
+index.mensaje=Dato ubicado en application.properties
+
+# PARÁMETROS DE CONEXIÓN A LA BD
+spring.datasource.url=jdbc:postgresql://HOST:5432/DATABASE?sslmode=require
+spring.datasource.username=USER
+spring.datasource.password=PASSWORD
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# DIALECTO DE POSTGRESQL
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+# VER EN EL LOG EL SQL GENERADO EN CADA OPERACIÓN
+spring.jpa.properties.hibernate.format_sql=true
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
