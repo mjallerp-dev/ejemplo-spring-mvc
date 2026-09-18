@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>EJEMPLO DE CRUD MVC CON SPRING BOOT</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="plantillas/partes :: cabecero"></header>
+        <h2>[[#{menu.titulo}]]</h2>
+        <hr>
+        <p><a th:href="@{/usuarios}">[[#{menu.usuarios}]]</a></p>
+        <p><a th:href="@{/articulos}">[[#{menu.articulos}]]</a></p>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">[[#{menu.salir}]]</button>
+        </form>
+        <br/><hr>
+        <footer th:replace="plantillas/partes :: pie"></footer>
+    </body>
+</html>
