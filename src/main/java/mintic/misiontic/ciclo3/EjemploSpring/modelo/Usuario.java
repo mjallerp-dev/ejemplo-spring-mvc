@@ -22,6 +22,7 @@ public class Usuario implements Serializable {
     private String clave;
     @NotEmpty
     private String nombre;
+    @NotEmpty
     @Email
     private String email;
 
