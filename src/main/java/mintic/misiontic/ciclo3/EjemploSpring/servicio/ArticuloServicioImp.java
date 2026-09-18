@@ -37,4 +37,16 @@ public class ArticuloServicioImp implements IArticuloServicio {
     public Articulo buscar(Articulo articulo) {
         return crudArticulo.findById(articulo.getId()).orElse(null);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Articulo> buscarPorMarca(String marca) {
+        return crudArticulo.buscarPorMarca(marca);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Articulo> buscarPorCategoria(String categoria) {
+        return crudArticulo.buscarPorCategoria(categoria);
+    }
 }

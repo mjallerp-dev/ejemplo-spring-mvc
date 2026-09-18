@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -58,5 +59,17 @@ public class ControladorArticulo {
     public String eliminar(Articulo articulo) {
         articuloServicio.eliminar(articulo);
         return "redirect:/articulos";
+    }
+
+    @GetMapping("/buscarMarca")
+    public String buscarPorMarca(@RequestParam String marca, Model modelo) {
+        modelo.addAttribute("articulos", articuloServicio.buscarPorMarca(marca));
+        return "articulos";
+    }
+
+    @GetMapping("/buscarCategoria")
+    public String buscarPorCategoria(@RequestParam String categoria, Model modelo) {
+        modelo.addAttribute("articulos", articuloServicio.buscarPorCategoria(categoria));
+        return "articulos";
     }
 }

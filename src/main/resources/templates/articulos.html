@@ -9,6 +9,18 @@
         <h2>PAGINA DE ARTICULOS</h2>
         <a th:href="@{/}">REGRESAR</a> &nbsp;|&nbsp;
         <a th:href="@{/articulos/agregar}">AGREGAR ARTICULO</a>
+        <h4>CONSULTAR ARTICULO POR MARCA</h4>
+        <form th:action="@{/articulos/buscarMarca}" method="get">
+            <label>Marca:</label>
+            <input type="text" name="marca" required>
+            <button type="submit">BUSCAR</button>
+        </form>
+        <h4>CONSULTAR ARTICULO POR CATEGORIA</h4>
+        <form th:action="@{/articulos/buscarCategoria}" method="get">
+            <label>Categoria:</label>
+            <input type="text" name="categoria" required>
+            <button type="submit">BUSCAR</button>
+        </form>
         <h4>LISTA DE ARTICULOS</h4>
         <hr>
         <div th:if="${articulos != null and !articulos.empty}">
