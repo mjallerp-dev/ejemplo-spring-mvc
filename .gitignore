@@ -40,3 +40,6 @@ application.yaml
 logs/
 .env
 .env.*
+
+###Azure###
+.azure/
