@@ -18,43 +18,46 @@ import java.util.List;
 public class ControladorInicio {
 
     @Autowired
-
     IUsuarioServicio userServicio;
 
     @GetMapping("/")
-    public String inicio(Model modelo) {
-        //List<Usuario> listaUsuarios =
+    public String inicio() {
+        return "home";
+    }
+
+    @GetMapping("/usuarios")
+    public String listar(Model modelo) {
         List<Usuario> listaUsuarios = (List<Usuario>) userServicio.listarUsuarios();
         modelo.addAttribute("usuarios", listaUsuarios);
         log.info("Ejecutando el controlador Inicio MVC");
-        return "index";
+        return "usuarios";
     }
 
-    @GetMapping("/agregar")
+    @GetMapping("/usuarios/agregar")
     public String agregar(Usuario usuario) {
         return "modificar";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/usuarios/guardar")
     public String guardar(@Valid Usuario usuario, Errors errores) {
         if (errores.hasErrors()) {
             return "modificar";
         }
         userServicio.guardar(usuario);
-        return "redirect:/";
+        return "redirect:/usuarios";
     }
 
-    @GetMapping("/editar/{cedula}")
+    @GetMapping("/usuarios/editar/{cedula}")
     public String editar(Usuario usuario, Model modelo) {
-            log.info("Invicando el metodo editar");
+        log.info("Invocando el metodo editar");
         usuario = userServicio.buscar(usuario);
         modelo.addAttribute("usuario", usuario);
         return "modificar";
     }
 
-    @GetMapping("/eliminar/{cedula}")
+    @GetMapping("/usuarios/eliminar/{cedula}")
     public String eliminar(Usuario usuario) {
         userServicio.eliminar(usuario);
-        return "redirect:/";
+        return "redirect:/usuarios";
     }
 }

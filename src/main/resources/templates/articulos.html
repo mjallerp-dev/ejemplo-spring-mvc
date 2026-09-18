@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>EJEMPLO DE CRUD MVC CON SPRING BOOT</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="plantillas/partes :: cabecero"></header>
+        <h2>PAGINA DE ARTICULOS</h2>
+        <a th:href="@{/}">REGRESAR</a> &nbsp;|&nbsp;
+        <a th:href="@{/articulos/agregar}">AGREGAR ARTICULO</a>
+        <h4>LISTA DE ARTICULOS</h4>
+        <hr>
+        <div th:if="${articulos != null and !articulos.empty}">
+            <table border="1">
+                <tr>
+                    <th>[[#{articulo.id}]]</th>
+                    <th>[[#{articulo.marca}]]</th>
+                    <th>[[#{articulo.precioVenta}]]</th>
+                    <th>[[#{articulo.precioCompra}]]</th>
+                    <th>[[#{articulo.iva}]]</th>
+                    <th>[[#{articulo.modelo}]]</th>
+                    <th>[[#{articulo.proveedor}]]</th>
+                    <th>[[#{articulo.tienda}]]</th>
+                    <th>[[#{articulo.cantidad}]]</th>
+                    <th>[[#{articulo.descripcion}]]</th>
+                    <th>[[#{articulo.categoria}]]</th>
+                    <th>[[#{articulo.usuario}]]</th>
+                    <th>[[#{accion.editar}]]</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                </tr>
+                <tr th:each="a: ${articulos}">
+                    <td th:text="${a.id}"></td>
+                    <td th:text="${a.marca}"></td>
+                    <td th:text="${a.precioVenta}"></td>
+                    <td th:text="${a.precioCompra}"></td>
+                    <td th:text="${a.iva}"></td>
+                    <td th:text="${a.modelo}"></td>
+                    <td th:text="${a.proveedor}"></td>
+                    <td th:text="${a.tienda}"></td>
+                    <td th:text="${a.cantidad}"></td>
+                    <td th:text="${a.descripcion}"></td>
+                    <td th:text="${a.categoria}"></td>
+                    <td th:text="${a.usuario != null ? a.usuario.nombre : ''}"></td>
+                    <td><a th:href="@{/articulos/editar/}+${a.id}" th:text="#{accion.editar}"></a></td>
+                    <td><a th:href="@{/articulos/eliminar/}+${a.id}" th:text="#{accion.eliminar}"></a></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${articulos == null or articulos.empty}">
+            [[#{articulo.lista-vacia}]]
+        </div> <br/><hr>
+        <footer th:replace="plantillas/partes :: pie"></footer>
+    </body>
+</html>
