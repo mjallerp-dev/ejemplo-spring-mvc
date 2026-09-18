@@ -9,6 +9,18 @@
         <h2>PAGINA DE USUARIOS</h2>
         <a th:href="@{/}">REGRESAR</a> &nbsp;|&nbsp;
         <a th:href="@{/usuarios/agregar}">AGREGAR USUARIO</a>
+        <h4>CONSULTAR USUARIO POR NOMBRE</h4>
+        <form th:action="@{/usuarios/buscarNombre}" method="get">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+            <button type="submit">BUSCAR</button>
+        </form>
+        <h4>CONSULTAR USUARIO POR EMAIL</h4>
+        <form th:action="@{/usuarios/buscarEmail}" method="get">
+            <label>Email:</label>
+            <input type="text" name="email" required>
+            <button type="submit">BUSCAR</button>
+        </form>
         <h4>LISTA DE PERSONAS</h4>
         <hr>
         <div th:if="${usuarios != null and !usuarios.empty}">

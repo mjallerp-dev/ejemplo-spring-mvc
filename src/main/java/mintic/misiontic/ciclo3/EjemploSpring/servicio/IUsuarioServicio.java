@@ -12,4 +12,8 @@ public interface IUsuarioServicio {
     public void eliminar(Usuario user);
 
     public Usuario buscar(Usuario user);
+
+    List<Usuario> buscarPorNombre(String nombre);
+
+    List<Usuario> buscarPorEmail(String email);
 }

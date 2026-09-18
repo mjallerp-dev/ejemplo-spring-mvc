@@ -37,4 +37,16 @@ public class UsuarioServicioImp implements IUsuarioServicio {
     public Usuario buscar(Usuario user) {
         return crudUser.findById(user.getCedula()).orElse(null);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Usuario> buscarPorNombre(String nombre) {
+        return crudUser.buscarPorNombre(nombre);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Usuario> buscarPorEmail(String email) {
+        return crudUser.buscarPorEmail(email);
+    }
 }
