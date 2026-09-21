@@ -32,12 +32,12 @@ spring.datasource.username=USER
 spring.datasource.password=PASSWORD
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-```
+````
 
 Tablas esperadas:
 
-- `usuarios` (PK `cedula`)
-- `articulos` (PK `id`, FK `usuario_cedula` → `usuarios.cedula`)
+* `usuarios` (PK `cedula`)
+* `articulos` (PK `id`, FK `usuario_cedula` → `usuarios.cedula`)
 
 La aplicación **no** crea el esquema (`ddl-auto` no está en `update`). Las tablas deben existir antes de arrancar.
 
@@ -62,7 +62,19 @@ No subas contraseñas reales al repositorio.
 
 ## Cómo ejecutar
 
-Desde la raíz del proyecto:
+La aplicación ya se encuentra desplegada y disponible en **Azure Web App**, por lo que para probarla no es necesario realizar una instalación local.
+
+### Acceso a la aplicación
+
+Abrir:
+
+https://app-ejemplospring-mjaller-hqa5hjgxerdrgef5.centralus-01.azurewebsites.net
+
+La aplicación redirige a `/login`.
+
+### Ejecución local
+
+Si se desea ejecutar el proyecto localmente, desde la raíz del proyecto:
 
 ```bash
 mvn spring-boot:run
@@ -70,31 +82,33 @@ mvn spring-boot:run
 
 O en el IDE: ejecutar `EjemploSpringApplication`.
 
-Abrir: [http://localhost:8080](http://localhost:8080)
+Abrir:
 
-Redirige a `/login`.
+http://localhost:8080
 
 ## Cómo probar
 
-1. **Login:** cédula (`username`) y clave (`password`) de un registro en `usuarios`.
-2. **Menú:** Gestionar Usuarios, Gestionar Articulos, Cerrar Sesión.
-3. **CRUD usuarios:** `/usuarios` — agregar, editar, eliminar. Validación de campos vacíos y formato de email.
-4. **Consultas usuarios:** por nombre y por email (coincidencias parciales).
-5. **CRUD artículos:** `/articulos` — agregar, editar, eliminar. El IVA se calcula al 19 % del precio de venta.
-6. **Consultas artículos:** por marca y por categoría.
-7. **Recordatorio de clave:** en login → *Olvidé mi clave* → email **exacto** de un usuario. Llega un correo con asunto `Recuperación de Contraseña`.
-8. Rutas públicas: `/login`, `/recuperar`. El resto exige sesión.
+### Credenciales de acceso
 
-## Estructura breve
+Para ingresar a la aplicación desplegada:
 
-```
-src/main/java/.../EjemploSpring/
-  controladores/     MVC (vistas HTML, no REST)
-  servicio/
-  dao/               Spring Data + @Query
-  modelo/            Usuario, Articulo
-src/main/resources/
-  templates/         Thymeleaf
-  messages.properties
-  application.properties
-```
+* **Cédula:** `123456789`
+* **Contraseña:** `Abcde*`
+
+### Funcionalidades principales
+
+1. **Login:** ingresar con las credenciales indicadas.
+2. **Menú:** acceder a Gestionar Usuarios, Gestionar Artículos y Cerrar Sesión.
+3. **CRUD usuarios:** crear, consultar, actualizar y eliminar usuarios.
+4. **Consultas usuarios:** realizar búsquedas por nombre y por email.
+5. **CRUD artículos:** crear, consultar, actualizar y eliminar artículos.
+6. **Consultas artículos:** realizar búsquedas por marca y por categoría.
+7. **IVA:** verificar que el IVA se calcule automáticamente al **19 % del precio de venta**.
+8. **Recordatorio de clave:** desde el login seleccionar *Olvidé mi clave* e ingresar el email exacto de un usuario registrado.
+9. **Acceso:** `/login` y `/recuperar` son las rutas públicas. El resto de funcionalidades requiere iniciar sesión.
+
+## Despliegue
+
+La aplicación está publicada en **Microsoft Azure Web App** y puede ser accedida directamente desde Internet:
+
+https://app-ejemplospring-mjaller-hqa5hjgxerdrgef5.centralus-01.azurewebsites.net
