@@ -37,7 +37,6 @@
                     <th>[[#{articulo.cantidad}]]</th>
                     <th>[[#{articulo.descripcion}]]</th>
                     <th>[[#{articulo.categoria}]]</th>
-                    <th>[[#{articulo.usuario}]]</th>
                     <th>[[#{accion.editar}]]</th>
                     <th>[[#{accion.eliminar}]]</th>
                 </tr>
@@ -53,7 +52,6 @@
                     <td th:text="${a.cantidad}"></td>
                     <td th:text="${a.descripcion}"></td>
                     <td th:text="${a.categoria}"></td>
-                    <td th:text="${a.usuario != null ? a.usuario.nombre : ''}"></td>
                     <td><a th:href="@{/articulos/editar/}+${a.id}" th:text="#{accion.editar}"></a></td>
                     <td><a th:href="@{/articulos/eliminar/}+${a.id}" th:text="#{accion.eliminar}"></a></td>
                 </tr>

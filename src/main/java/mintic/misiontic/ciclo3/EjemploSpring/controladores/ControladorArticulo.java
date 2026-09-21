@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import mintic.misiontic.ciclo3.EjemploSpring.modelo.Articulo;
 import mintic.misiontic.ciclo3.EjemploSpring.servicio.IArticuloServicio;
-import mintic.misiontic.ciclo3.EjemploSpring.servicio.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +21,6 @@ public class ControladorArticulo {
     @Autowired
     IArticuloServicio articuloServicio;
 
-    @Autowired
-    IUsuarioServicio usuarioServicio;
-
     @GetMapping
     public String listar(Model modelo) {
         modelo.addAttribute("articulos", articuloServicio.listarArticulos());
@@ -33,15 +29,13 @@ public class ControladorArticulo {
     }
 
     @GetMapping("/agregar")
-    public String agregar(Articulo articulo, Model modelo) {
-        modelo.addAttribute("usuarios", usuarioServicio.listarUsuarios());
+    public String agregar(Articulo articulo) {
         return "modificarArticulo";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid Articulo articulo, Errors errores, Model modelo) {
+    public String guardar(@Valid Articulo articulo, Errors errores) {
         if (errores.hasErrors()) {
-            modelo.addAttribute("usuarios", usuarioServicio.listarUsuarios());
             return "modificarArticulo";
         }
         articuloServicio.guardar(articulo);
@@ -51,7 +45,6 @@ public class ControladorArticulo {
     @GetMapping("/editar/{id}")
     public String editar(Articulo articulo, Model modelo) {
         modelo.addAttribute("articulo", articuloServicio.buscar(articulo));
-        modelo.addAttribute("usuarios", usuarioServicio.listarUsuarios());
         return "modificarArticulo";
     }
 

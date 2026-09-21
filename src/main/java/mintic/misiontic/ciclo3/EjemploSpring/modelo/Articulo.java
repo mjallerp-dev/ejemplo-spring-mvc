@@ -53,10 +53,6 @@ public class Articulo implements Serializable {
     @Column(length = 100)
     private String categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_cedula")
-    private Usuario usuario;
-
     @PrePersist
     @PreUpdate
     public void calcularIva() {

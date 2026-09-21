@@ -47,12 +47,6 @@
             <label for="categoria" th:text="#{articulo.categoria}"></label>
             <input type="text" name="categoria" th:field="*{categoria}" />
             <br/>
-            <label for="usuario" th:text="#{articulo.usuario}"></label>
-            <select id="usuario" th:field="*{usuario}">
-                <option value="">-- Seleccione --</option>
-                <option th:each="u : ${usuarios}" th:value="${u.cedula}" th:text="${u.nombre}"></option>
-            </select>
-            <br/>
             <input type="reset" th:value="#{accion.limpiar}"/> &nbsp;&nbsp;&nbsp;
             <input type="submit" name="guardar" th:value="#{accion.guardar}"/>
             <br/>
