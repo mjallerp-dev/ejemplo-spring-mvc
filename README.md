@@ -37,7 +37,7 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 Tablas esperadas:
 
 * `usuarios` (PK `cedula`)
-* `articulos` (PK `id`, FK `usuario_cedula` → `usuarios.cedula`)
+* `articulos` (PK `id`)
 
 La aplicación **no** crea el esquema (`ddl-auto` no está en `update`). Las tablas deben existir antes de arrancar.
 
